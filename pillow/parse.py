@@ -3,13 +3,16 @@ from lex import *
 
 # Parser object keeps track of current token and checks if the code matches the grammar.
 class Parser:
+    
     def __init__(self, lexer, emitter):
         self.lexer = lexer
         self.emitter = emitter
 
-        self.symbols = set()    # Variables declared so far.
+        self.symbols = set() # Variables declared so far.
         self.labelsDeclared = set() # Labels declared so far.
         self.labelsGotoed = set() # Labels goto'ed so far.
+        self.count_while = 0   # For proper indentation in nested while loops
+        self.count_if = 0  # For proper indentation in nested if loops
 
         self.curToken = None
         self.peekToken = None
@@ -68,6 +71,7 @@ class Parser:
             if self.checkToken(TokenType.STRING):
                 # Simple string, so print it.
                 self.emitter.emitLine("print(\"" + self.curToken.text + "\")")
+                self.emitter.emitLine("")
                 self.nextToken()
 
             else:
@@ -75,9 +79,11 @@ class Parser:
                 self.emitter.emit("print(float(")
                 self.expression()
                 self.emitter.emit("))")
+                self.emitter.emitLine("")
 
         # "IF" comparison "THEN" block "ENDIF"
         elif self.checkToken(TokenType.IF):
+            self.count_if += 1
             self.nextToken()
             self.emitter.emit("if(")
             self.comparison()
@@ -88,13 +94,15 @@ class Parser:
 
             # Zero or more statements in the body.
             while not self.checkToken(TokenType.ENDIF):
-                self.emitter.emit("\t")
+                self.emitter.emit(self.count_if * "\t")
                 self.statement()
 
+            self.count_if -= 1
             self.match(TokenType.ENDIF)
 
         # "WHILE" comparison "REPEAT" block "ENDWHILE"
         elif self.checkToken(TokenType.WHILE):
+            self.count_while += 1
             self.nextToken()
             self.emitter.emit("while(")
             self.comparison()
@@ -105,9 +113,10 @@ class Parser:
 
             # Zero or more statements in the loop body.
             while not self.checkToken(TokenType.ENDWHILE):
-                self.emitter.emit("\t")
+                self.emitter.emit(self.count_while * "\t")
                 self.statement()
 
+            self.count_while -= 1
             self.match(TokenType.ENDWHILE)
 
         # "LABEL" ident

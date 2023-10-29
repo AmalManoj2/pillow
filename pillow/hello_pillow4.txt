@@ -1,0 +1,30 @@
+# Check if a number is an Armstrong number.
+
+LET a = 0
+LET b = 0
+LET c = 0
+LET d = 0
+LET e = 0
+
+PRINT "Enter length of number: "
+INPUT e 
+
+PRINT "Enter each individual digit of the number: " 
+
+WHILE d<e REPEAT
+INPUT c
+
+LET a = a * 10
+LET a = a + c
+LET c = c * c * c
+LET b = b + c
+LET d = d + 1
+ENDWHILE
+
+IF a==b THEN
+PRINT "It is an Armstrong number"
+ENDIF 
+
+IF a!=b THEN
+PRINT "It is not an Armstrong number"
+ENDIF

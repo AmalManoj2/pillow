@@ -1,0 +1,39 @@
+# Check if a number is a Palindrome.
+
+LET z = 0
+LET x = 0
+LET n = 0
+LET s = 0
+LET w = 0
+LET check = 0
+
+PRINT "Enter length of number: "
+INPUT n
+
+WHILE x<n REPEAT
+PRINT "Enter each individual digit of the number: "
+INPUT w
+LET z = 0
+LET s = s * 10
+LET s = s + w
+
+WHILE z<x REPEAT
+LET w = w * 10
+LET z = z + 1
+ENDWHILE
+
+LET x = x + 1
+
+LET check = check + w 
+ENDWHILE
+
+PRINT s
+PRINT check
+
+IF s == check THEN
+PRINT "Yes, it is a Palindrome"
+ENDIF
+
+IF s != check THEN
+PRINT "No, it is not a Palindrome"
+ENDIF

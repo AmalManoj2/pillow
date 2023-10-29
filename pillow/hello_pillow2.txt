@@ -1,0 +1,18 @@
+# Compute Fibonacci series for a given number of terms.
+
+LET a = 0
+LET b = 0
+LET c = 1
+LET d = c
+LET e = 1
+
+PRINT "Enter number of terms: "
+INPUT a
+
+WHILE e <= a REPEAT
+    PRINT d
+    LET e = e + 1
+    LET b = c
+    LET c = d
+    LET d = b + c
+ENDWHILE

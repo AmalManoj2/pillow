@@ -1,4 +1,4 @@
-from token import Token, TokenType
+from token_1 import Token, TokenType
 import sys
 
 class Lexer:

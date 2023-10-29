@@ -4,7 +4,7 @@ from parse import *
 import sys
 
 def main():
-    print("Teeny Tiny Compiler")
+    print("Mini Pillow Compiler")
 
     if len(sys.argv) != 2:
         sys.exit("Error: Compiler needs source file as argument.")
