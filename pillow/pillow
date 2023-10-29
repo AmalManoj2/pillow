@@ -1,0 +1,4 @@
+python3 main.py "programs/"$1
+python3 out.py
+
+rm out.py
