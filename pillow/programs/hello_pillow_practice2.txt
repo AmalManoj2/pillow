@@ -1,0 +1,20 @@
+# Exponent
+
+LET a = 0
+LET b = 0
+LET c = 0
+
+PRINT "Enter Base: "
+INPUT a
+
+PRINT "Enter Exponent: "
+INPUT c
+
+LET d = a
+
+WHILE b<= c-2 REPEAT
+    LET a = a * d
+    LET b = b + 1
+ENDWHILE 
+
+PRINT a

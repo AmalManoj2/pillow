@@ -1,0 +1,20 @@
+# Divide numbers greater than or equal to 1000 by 5
+
+LET a = 0
+LET b = 0
+LET c = 0
+WHILE c <=4 REPEAT
+    PRINT "Enter Number: "
+    INPUT a
+    IF a < 1000 THEN
+        PRINT "Invalid Input"
+    ENDIF
+    IF a >= 1000 THEN
+        LET b = a / 5
+    ENDIF
+    IF b != 0 THEN
+        PRINT b
+    ENDIF
+    LET b = 0
+    LET c = c + 1
+ENDWHILE

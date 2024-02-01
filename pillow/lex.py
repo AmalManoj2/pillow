@@ -112,4 +112,3 @@ class Lexer:
 
         self.nextChar()
         return token
-    

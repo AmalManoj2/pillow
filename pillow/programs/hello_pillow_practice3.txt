@@ -1,0 +1,24 @@
+# Divisibility check i.e. remainder
+
+LET a = 0
+LET b = 0
+
+PRINT "Enter First Number: "
+INPUT a 
+
+PRINT "Enter Second Numner: "
+INPUT b
+
+LET c = a/b
+
+WHILE c > 0 REPEAT
+    LET c = c -1
+ENDWHILE
+
+IF c == 0.0 THEN
+    PRINT "Divisible"
+ENDIF
+
+IF c != 0.0 THEN
+    PRINT "Not Divisible"
+ENDIF

@@ -1,0 +1,37 @@
+# Prime Numbers
+
+LET a = 2
+LET b = 2
+LET c = 0
+LET d = 0
+LET check = 1
+LET number = 0
+LET prime = 0
+
+PRINT "Enter number of primes: "
+INPUT number
+
+WHILE check REPEAT
+    WHILE b <= a/2 REPEAT
+        LET c = a/b 
+        WHILE c > 0 REPEAT
+            LET c = c - 1
+        ENDWHILE
+
+        IF c == 0.0 THEN
+            LET d = 1
+        ENDIF
+        LET b = b + 1
+
+    ENDWHILE
+
+    IF d == 0 THEN
+        PRINT a
+        LET prime = prime + 1
+    ENDIF
+    LET d = 0
+    LET a = a + 1
+    IF prime == number THEN
+        LET check = 0
+    ENDIF
+ENDWHILE

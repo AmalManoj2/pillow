@@ -94,7 +94,7 @@ class Parser:
 
             # Zero or more statements in the body.
             while not self.checkToken(TokenType.ENDIF):
-                self.emitter.emit(self.count_if * "\t")
+                self.emitter.emit((self.count_if + self.count_while) * "\t")
                 self.statement()
 
             self.count_if -= 1
@@ -113,7 +113,7 @@ class Parser:
 
             # Zero or more statements in the loop body.
             while not self.checkToken(TokenType.ENDWHILE):
-                self.emitter.emit(self.count_while * "\t")
+                self.emitter.emit((self.count_while + self.count_if) * "\t")
                 self.statement()
 
             self.count_while -= 1
